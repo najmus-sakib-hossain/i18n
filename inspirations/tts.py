@@ -9,6 +9,8 @@ async def main():
     voice = "en-US-AriaNeural"  # Default voice; change if needed
     communicate = edge_tts.Communicate(text, voice)
     await communicate.save("edge_tts.mp3")
+    voices = await edge_tts.list_voices()
+    print(voices)
 
 asyncio.run(main())
 gc.collect()
