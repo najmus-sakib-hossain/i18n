@@ -2,7 +2,7 @@
 
 use crate::error::{I18nError, Result};
 use crate::tts::base::{TTSConfig, TextToSpeech};
-use crate::tts::constants::{DEFAULT_VOICE, EDGE_TTS_WSS_URL};
+use crate::tts::constants::EDGE_TTS_WSS_URL;
 use async_trait::async_trait;
 use futures_util::{SinkExt, StreamExt};
 use serde::{Deserialize, Serialize};

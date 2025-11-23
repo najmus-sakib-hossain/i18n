@@ -22,7 +22,6 @@ struct TranslationResponse {
 #[derive(Deserialize)]
 struct Translation {
     text: String,
-    to: String,
 }
 
 /// Microsoft Translator
@@ -113,9 +112,10 @@ impl Translator for MicrosoftTranslator {
             .await?;
 
         if !response.status().is_success() {
+            let status_code = response.status().as_u16();
             let error_text = response.text().await?;
             return Err(I18nError::ServerError {
-                code: response.status().as_u16(),
+                code: status_code,
                 message: error_text,
             });
         }

@@ -2,7 +2,7 @@
 
 use crate::error::{I18nError, Result};
 use crate::tts::base::TextToSpeech;
-use crate::tts::constants::{GOOGLE_TTS_MAX_CHARS, GOOGLE_TTS_RPC, GOOGLE_TTS_URL};
+use crate::tts::constants::{GOOGLE_TTS_MAX_CHARS, GOOGLE_TTS_RPC};
 use async_trait::async_trait;
 use base64::{engine::general_purpose, Engine as _};
 use regex::Regex;
