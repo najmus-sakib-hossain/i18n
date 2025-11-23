@@ -210,7 +210,7 @@ cargo run --bin i18n-demo
 This will:
 1. Translate JSON messages to Spanish
 2. Generate audio files using both Google TTS and Edge TTS
-3. Save results and metadata to JSON files
+3. Save results and metadata to the `playgrounds/` folder
 
 ## 📚 Examples
 
@@ -230,14 +230,14 @@ cargo run --example translate_locale
 ## 🌍 Supported Languages
 
 ### Translation
-The library supports 100+ languages through Google Translate including:
+The library supports 249 languages through Google Translate including:
 - English, Spanish, French, German, Italian, Portuguese
 - Chinese (Simplified & Traditional), Japanese, Korean
 - Arabic, Hindi, Russian, Turkish
 - And many more...
 
 ### Text-to-Speech
-- **Google TTS**: 40+ languages with various accents
+- **Google TTS**: 249 languages with various accents
 - **Edge TTS**: 200+ voices across 70+ languages with neural voice quality
 
 ## 🔧 Configuration

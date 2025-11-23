@@ -103,7 +103,7 @@ async fn demo_translation() -> Result<(), Box<dyn std::error::Error>> {
     println!("{}", serde_json::to_string_pretty(&translated_messages)?);
 
     // Save to file
-    let output_path = "translations.json";
+    let output_path = "playgrounds/translations.json";
     std::fs::write(output_path, serde_json::to_string_pretty(&translated_messages)?)?;
     println!("\n💾 Saved translations to: {}", output_path);
 
@@ -139,7 +139,7 @@ async fn demo_tts() -> Result<(), Box<dyn std::error::Error>> {
     println!("Generating audio files...\n");
 
     // Create output directory if it doesn't exist
-    std::fs::create_dir_all("audio_output")?;
+    std::fs::create_dir_all("playgrounds/audio_output")?;
 
     let mut audio_messages = Vec::new();
 
@@ -148,7 +148,7 @@ async fn demo_tts() -> Result<(), Box<dyn std::error::Error>> {
     let google_tts = GoogleTTS::new("en");
 
     for msg in &messages {
-        let filename = format!("audio_output/{}_google.mp3", msg.id);
+        let filename = format!("playgrounds/audio_output/{}_google.mp3", msg.id);
         match google_tts.save(&msg.text, Path::new(&filename)).await {
             Ok(_) => {
                 println!("✓ Generated: {}", filename);
@@ -170,7 +170,7 @@ async fn demo_tts() -> Result<(), Box<dyn std::error::Error>> {
     let edge_tts = EdgeTTS::new("en-US-AriaNeural");
 
     for msg in &messages {
-        let filename = format!("audio_output/{}_edge.mp3", msg.id);
+        let filename = format!("playgrounds/audio_output/{}_edge.mp3", msg.id);
         match edge_tts.save(&msg.text, Path::new(&filename)).await {
             Ok(_) => {
                 println!("✓ Generated: {}", filename);
@@ -188,7 +188,7 @@ async fn demo_tts() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     // Save metadata
-    let metadata_path = "audio_metadata.json";
+    let metadata_path = "playgrounds/audio_metadata.json";
     std::fs::write(metadata_path, serde_json::to_string_pretty(&audio_messages)?)?;
     println!("\n💾 Saved audio metadata to: {}", metadata_path);
 
