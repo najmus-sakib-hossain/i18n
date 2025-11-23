@@ -106,8 +106,9 @@ impl TextToSpeech for GoogleTTS {
 
     fn get_supported_languages(&self) -> Vec<&'static str> {
         vec![
-            "en", "es", "fr", "de", "it", "pt", "ru", "ja", "ko", "zh",
-            "ar", "hi", "nl", "pl", "tr", "sv", "da", "no", "fi", "cs",
+            "af", "sq", "am", "ar", "hy", "az", "eu", "be", "bn", "bs", "bg", "ca", "ceb", "ny", "zh-CN", "zh-TW", "co", "hr", "cs", "da", "nl", "en", "eo", "et", "tl", "fi", "fr", "gl", "ka", "de", "el", "gu", "ht", "ha", "haw", "iw", "hi", "hmn", "hu", "is", "ig", "id", "ga", "it", "ja", "jw", "kn", "kk", "km", "ko", "ku", "ky", "lo", "la", "lv", "lt", "lb", "mk", "mg", "ms", "ml", "mt", "mi", "mr", "mn", "my", "ne", "no", "ps", "fa", "pl", "pt", "pa", "ro", "ru", "sm", "gd", "sr", "st", "sn", "sd", "si", "sk", "sl", "so", "es", "su", "sw", "sv", "tg", "ta", "te", "th", "tr", "uk", "ur", "uz", "vi", "cy", "xh", "yi", "yo", "zu",
+            // Additional languages supported by Google TTS
+            "fo", "ab", "ace", "ach", "aa", "alz", "as", "av", "awa", "ay", "ban", "bal", "bm", "bci", "ba", "btx", "bts", "bbc", "bem", "bew", "bho", "bik", "br", "bua", "yue", "ch", "ce", "chk", "cv", "crh", "prs", "dv", "din", "doi", "dov", "dyu", "dz", "ee", "fj", "fil", "fon", "fr-CA", "fy", "fur", "ff", "gaa", "gn", "cnh", "hil", "hrx", "iba", "ilo", "iu", "jam", "kac", "kl", "kr", "pam", "kha", "cgg", "kg", "rw", "ktu", "trp", "kv", "kok", "kri", "ckb", "ltg", "lij", "li", "ln", "lmo", "lg", "luo", "mad", "mai", "mak", "mam", "gv", "mh", "mwr", "mfe", "mhr", "mni", "min", "lus", "nhe", "ndc", "nr", "new", "nqo", "nus", "oc", "or", "os", "pag", "pap", "pt-BR", "pt-PT", "qu", "kek", "rom", "rn", "se", "sg", "sa", "sat", "nso", "crs", "shn", "scn", "szl", "sus", "ss", "ty", "ber", "tet", "bo", "tiv", "tpi", "to", "lua", "ts", "tn", "tcy", "tum", "tk", "tyv", "tw", "udm", "ug", "ve", "vec", "war", "wo", "sah", "yua", "zap"
         ]
     }
 }
