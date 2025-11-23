@@ -65,20 +65,24 @@ impl GoogleTTS {
     }
 
     async fn synthesize_part(&self, text: &str) -> Result<Vec<u8>> {
-        // For demo purposes, return a simple mock audio response
-        // In a real implementation, this would call the Google TTS API
-        eprintln!("Google TTS: Generating mock audio for '{}'", text);
+        // Use Google Translate TTS public API (no authentication required)
+        let url = format!("https://translate.google.com/translate_tts?ie=UTF-8&tl={}&client=tw-ob&q={}",
+                         self.lang, urlencoding::encode(text));
         
-        // Create a simple mock MP3 header + silence
-        // This is just for demo purposes to show the framework works
-        let mock_mp3 = vec![
-            0xFF, 0xFB, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-        ];
+        let client = reqwest::Client::new();
+        let response = client
+            .get(&url)
+            .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+            .header("Referer", "https://translate.google.com/")
+            .send()
+            .await?;
         
-        Ok(mock_mp3)
+        if !response.status().is_success() {
+            return Err(I18nError::Other(format!("Google TTS API error: {}", response.status())));
+        }
+        
+        let audio_data = response.bytes().await?;
+        Ok(audio_data.to_vec())
     }
 }
 
