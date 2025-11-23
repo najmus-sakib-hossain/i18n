@@ -145,7 +145,7 @@ async fn demo_tts() -> Result<(), Box<dyn std::error::Error>> {
 
     // Demo with Google TTS
     println!("Using Google TTS:");
-    let google_tts = GoogleTTS::new("en", "com", false);
+    let google_tts = GoogleTTS::new("en");
 
     for msg in &messages {
         let filename = format!("audio_output/{}_google.mp3", msg.id);
@@ -174,6 +174,12 @@ async fn demo_tts() -> Result<(), Box<dyn std::error::Error>> {
         match edge_tts.save(&msg.text, Path::new(&filename)).await {
             Ok(_) => {
                 println!("✓ Generated: {}", filename);
+                audio_messages.push(AudioMessage {
+                    id: format!("{}_edge", msg.id),
+                    text: msg.text.clone(),
+                    language: msg.language.clone(),
+                    audio_file: filename,
+                });
             }
             Err(e) => {
                 eprintln!("✗ Error generating {}: {}", filename, e);

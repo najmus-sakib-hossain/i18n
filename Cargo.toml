@@ -17,11 +17,12 @@ futures = "0.3"
 lazy_static = "1.4"
 regex = "1.10"
 urlencoding = "2.1"
-tokio-tungstenite = "0.21"
+tokio-tungstenite = { version = "0.21", features = ["native-tls"] }
 futures-util = "0.3"
 uuid = { version = "1.6", features = ["v4"] }
 chrono = "0.4"
 html-escape = "0.2"
+sha2 = "0.10"
 
 [lib]
 name = "i18n"
